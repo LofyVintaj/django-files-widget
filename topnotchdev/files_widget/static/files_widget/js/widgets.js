@@ -9,6 +9,7 @@ $(function(){
         undoText = $('[data-undo-text]').data('undo-text'),
         template,
         deletedTemplate;
+    console.log(widget);
 
     template =
         '<div class="new preview">'+
