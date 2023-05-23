@@ -323,6 +323,7 @@ $(function(){
             hiddenInput = $('input[name="' + field_name + '_0"]'),
             initialFileNames = splitlines(hiddenInput.val()),
             name;
+        console.log(dropbox);
 
         for (var i=0; i < initialFileNames.length; i++) {
             if (!initialFiles.filter('[data-image-path="' + initialFileNames[i] + '"]').length) {
