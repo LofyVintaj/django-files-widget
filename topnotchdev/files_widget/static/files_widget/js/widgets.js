@@ -494,6 +494,7 @@ $(function(){
 
     django.jQuery(document).on('formset:added', function(event, $row, formsetName) {
         var $files_widget = $($row).find('.files-widget');
+        console.log($files_widget);
         if ($files_widget.length){
             var row_id = $row.attr('id'), $prefix_name = $files_widget.find('[data-input-name]');
             if (row_id.indexOf('-')){
