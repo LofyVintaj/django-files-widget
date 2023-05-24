@@ -305,7 +305,7 @@ $(function(){
         $('.files-widget-dropbox').removeClass('dragging-files');
     });
 
-    function initial_widget(that) {
+    function initial_widget(that, row='') {
         var dropbox = $('.files-widget-dropbox', that),
             filesInput = $('.files-input', that),
             message = $('.message', dropbox),
@@ -323,6 +323,10 @@ $(function(){
             hiddenInput = $('input[name="' + field_name + '_0"]'),
             initialFileNames = splitlines(hiddenInput.val()),
             name;
+        if(row) {
+            field_name = dropbox.data('input-name').replace('__prefix__', row.split('-')[1]);
+            console.log(field_name);
+        }
 
         for (var i=0; i < initialFileNames.length; i++) {
             if (!initialFiles.filter('[data-image-path="' + initialFileNames[i] + '"]').length) {
@@ -498,11 +502,10 @@ $(function(){
             var row_id = $row.attr('id'), $prefix_name = $files_widget.find('[data-input-name]');
             if (row_id.indexOf('-')){
                 $prefix_name.attr('data-input-name', $prefix_name.attr('data-input-name').replace('__prefix__', row_id.split('-')[1]));
-                $files_widget.data('input-name', $prefix_name.attr('data-input-name').replace('__prefix__', row_id.split('-')[1]));
             }
             console.log('2', $files_widget.find('[data-input-name]'));
             console.log('3', $('.files-widget-dropbox', $files_widget).data('input-name'));
-            initial_widget($files_widget);
+            initial_widget($files_widget, row_id);
         }
     });
 });
