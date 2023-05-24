@@ -9,7 +9,6 @@ $(function(){
         undoText = $('[data-undo-text]').data('undo-text'),
         template,
         deletedTemplate;
-    console.log(widget);
 
     template =
         '<div class="new preview">'+
@@ -324,7 +323,6 @@ $(function(){
             hiddenInput = $('input[name="' + field_name + '_0"]'),
             initialFileNames = splitlines(hiddenInput.val()),
             name;
-        console.log(dropbox);
 
         for (var i=0; i < initialFileNames.length; i++) {
             if (!initialFiles.filter('[data-image-path="' + initialFileNames[i] + '"]').length) {
@@ -494,12 +492,15 @@ $(function(){
 
     django.jQuery(document).on('formset:added', function(event, $row, formsetName) {
         var $files_widget = $($row).find('.files-widget');
-        console.log($files_widget);
+        console.log('$files_widget', !!$files_widget.length);
+        console.log('1', $files_widget.find('[data-input-name]'));
         if ($files_widget.length){
             var row_id = $row.attr('id'), $prefix_name = $files_widget.find('[data-input-name]');
             if (row_id.indexOf('-')){
                 $prefix_name.attr('data-input-name', $prefix_name.attr('data-input-name').replace('__prefix__', row_id.split('-')[1]));
             }
+            console.log('2', $files_widget.find('[data-input-name]'));
+            console.log('3', $('.files-widget-dropbox', $files_widget));
             initial_widget($files_widget);
         }
     });
