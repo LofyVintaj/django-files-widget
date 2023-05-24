@@ -498,9 +498,10 @@ $(function(){
             var row_id = $row.attr('id'), $prefix_name = $files_widget.find('[data-input-name]');
             if (row_id.indexOf('-')){
                 $prefix_name.attr('data-input-name', $prefix_name.attr('data-input-name').replace('__prefix__', row_id.split('-')[1]));
+                $files_widget.data('input-name', $prefix_name.attr('data-input-name').replace('__prefix__', row_id.split('-')[1]));
             }
             console.log('2', $files_widget.find('[data-input-name]'));
-            console.log('3', $('.files-widget-dropbox', $files_widget));
+            console.log('3', $('.files-widget-dropbox', $files_widget).data('input-name'));
             initial_widget($files_widget);
         }
     });
