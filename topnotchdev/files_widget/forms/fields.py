@@ -56,7 +56,7 @@ class FilesFormField(forms.MultiValueField):
                 errors.extend(e.messages)
         if errors:
             raise ValidationError(errors)
-
+        print(' clean data library - ', clean_data)
         out = self.compress(clean_data)
         self.validate(out)
         self.run_validators(out)

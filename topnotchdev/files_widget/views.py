@@ -29,6 +29,7 @@ def get_file_field(app_label, model_name, field_name):
         except AttributeError:
             return model._meta.get_field(real_field_name)
     except FieldDoesNotExist:
+        print( ' FieldDoesNotExist :( ' )
         raise
 
 
